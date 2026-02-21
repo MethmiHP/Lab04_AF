@@ -43,17 +43,37 @@
 // console.log(myModule.myFunction());
 
 
-const myPromise = new Promise((resolve, reject) => { 
-    const condition = true; // Change this to false to test rejection
-  if (condition) { 
-    resolve('Success!'); 
-  } else { 
-    reject('Failure!'); 
-  } 
-}); 
+// const myPromise = new Promise((resolve, reject) => { 
+//     const condition = true; // Change this to false to test rejection
+//   if (condition) { 
+//     resolve('Success!'); 
+//   } else { 
+//     reject('Failure!'); 
+//   } 
+// }); 
  
-myPromise.then((result) => { 
-  console.log(result); 
-}).catch((error) => { 
-  console.log(error); 
-}); 
+// myPromise.then((result) => { 
+//   console.log(result); 
+// }).catch((error) => { 
+//   console.log(error); 
+// }); 
+
+
+function getData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data received after 2 seconds");
+    }, 2000);
+  });
+}
+
+async function myFunction() {
+  try {
+    const result = await getData();
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+myFunction();
